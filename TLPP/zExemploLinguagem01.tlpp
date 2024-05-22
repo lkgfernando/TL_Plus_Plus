@@ -1,0 +1,30 @@
+#Include "Totvs.ch"
+#Include "tlpp-core.th"
+
+
+Namespace nomeslongos
+
+/*/{Protheus.doc} zExemploLinguagem01
+(long_description)
+@type user function
+@author Fernando Rodrigues
+@since 22/05/2024
+@version 12/
+@param , , 
+@return , , 
+@example
+(examples)
+@see nomeslongos.u_zExemploLinguagem01()
+/*/
+User Function zExemploLinguagem01()
+  Local aAreaBkp                := FwGetArea() as Array
+  Local cFuncionarioNome        := "Fernando"  as Character
+  Local cFuncionarioSobreNome   := "Rodrigues" as Character
+  Local cMensagemQueSeraExibida := ""          as Character
+
+  cMensagemQueSeraExibida := FormatStr("O nome do funcionário é %c e o sobrenome é %c", {cFuncionarioNome, cFuncionarioSobreNome})
+
+  FwAlertInfo(cMensagemQueSeraExibida, "Atenção")
+
+  FwRestArea(aAreaBkp)
+Return 

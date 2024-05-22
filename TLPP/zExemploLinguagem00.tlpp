@@ -1,0 +1,38 @@
+#Define CarriageReturnLineFeed Chr(13) + Chr(10)
+
+/*/{Protheus.doc} zExemploLinguagem00
+(long_description)
+@type user function
+@author Fernando Rodrigues
+@since 22/05/2024
+@version 12/
+@param , , 
+@return , , 
+@example
+(examples)
+@see (links_or_references)
+/*/
+User Function zExemploLinguagem00()
+  Local lDeuCerto     := .F. as Logical
+  Local cRetorno      := ""  as Character
+  Local cMensagemLog  := ""  as Character
+  Local aMensagens    := {}  as Array
+  Local nPosicaoAtual := 0   as Numeric
+
+  lDeuCerto := tlpp.environment.getIncludesTLPP(@cRetorno, @aMensagens)
+
+  If ! lDeuCerto 
+    cMensagemLog := "Houve uma falha na extração: " + cRetorno + CarriageReturnLineFeed
+
+    For nPosicaoAtual := 1 To Len(aMensagens)
+      cMensagemLog += "[" + StrZero(nPosicaoAtual, 5) + "] Error: " + cValToChar(aMensagens[nPosicaoAtual] + CarriageReturnLineFeed)
+    Next
+  Else
+    cMensagemLog := "Sucesso na extração: " + cRetorno + CarriageReturnLineFeed
+  EndIf
+
+  ShowLog(cMensagemLog)
+
+
+Return 
+
